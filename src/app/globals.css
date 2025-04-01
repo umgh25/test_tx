@@ -1,8 +1,18 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "helvetica";
+  src: url("/fonts/helvetica/Helvetica.ttf") format("truetype");
+}
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+/* Réinitialisation des marges et paddings par défaut */
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 @theme inline {
