@@ -9,7 +9,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <header className="pt-1 pb-4 px-6 flex items-center bg-white relative">
-      {/* Logo et navigation gauche - avec padding-left pour décaler vers la droite */}
+      
       <div className="flex items-center mr-auto pl-12">
         <Link href="/" className="mr-12">
           <Image
@@ -30,7 +30,7 @@ const Header = () => {
         </nav>
       </div>
       
-      {/* Navigation droite - avec padding-right pour décaler de la droite */}
+      
       <div className="hidden md:flex items-center pr-16">
         <Link href="/simulateur" className="text-gray-700 hover:text-blue-700 transition-colors mr-8">
           Simulateur
