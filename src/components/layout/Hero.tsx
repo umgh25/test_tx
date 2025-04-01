@@ -23,12 +23,12 @@ const Hero = () => {
           <br />
           sans garantie personnelle.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-lg h-auto rounded-full">
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-6 text-lg h-auto">
             Se connecter
           </Button>
           <Link href="/inscription" className="group">
-            <Button variant="outline" className="text-green-500 border-green-500 px-8 py-3 h-auto text-lg flex items-center">
+            <Button variant="ghost" className="text-green-500 px-4 py-6 h-auto text-lg flex items-center">
               S&apos;inscrire
               <svg
                 xmlns="http://www.w3.org/2000/svg"
