@@ -1,6 +1,4 @@
-import type React from 'react';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
+import type React from "react";
 
 interface LoanData {
   type: string;
@@ -15,7 +13,7 @@ interface LoanData {
   globalEffectiveRate: string;
   requestDate: string;
   lastPaymentDate: string;
-  status: 'validé' | 'en attente';
+  status: "validé" | "en attente";
 }
 
 interface LoansTableProps {
@@ -27,77 +25,69 @@ const LoansTable: React.FC<LoansTableProps> = ({ data }) => {
     <div className="mt-8">
       <h2 className="text-xl font-semibold mb-4">Détails des prêts</h2>
 
-      <div className="overflow-x-auto">
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-slate-50">
-              <TableHead className="font-medium text-xs">Nombre de contrat</TableHead>
-              <TableHead className="font-medium text-xs">Identifiant emprunteur</TableHead>
-              <TableHead className="font-medium text-xs">Montant demandé</TableHead>
-              <TableHead className="font-medium text-xs">Montant du prêt</TableHead>
-              <TableHead className="font-medium text-xs">Mensualité</TableHead>
-              <TableHead className="font-medium text-xs">Durée résiduelle</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {data.map((loan) => (
-              <TableRow key={loan.accountNumber}>
-                <TableCell className="text-xs">{loan.accountNumber}</TableCell>
-                <TableCell className="text-xs">{loan.borrowerIdentifier}</TableCell>
-                <TableCell className="text-xs">{loan.requestedAmount}</TableCell>
-                <TableCell className="text-xs">{loan.loanAmount}</TableCell>
-                <TableCell className="text-xs">
-                  {loan.status === 'validé' ? loan.monthlyPayment : 'En attente'}
-                </TableCell>
-                <TableCell className="text-xs">
-                  {loan.status === 'validé' ? `${loan.durationMonths} mois` : 'En attente'}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-
-      <h3 className="text-lg font-medium mt-8 mb-4">Informations complémentaires</h3>
-
-      <div className="overflow-x-auto">
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-slate-50">
-              <TableHead className="font-medium text-xs">Type</TableHead>
-              <TableHead className="font-medium text-xs">Taux d'intérêt</TableHead>
-              <TableHead className="font-medium text-xs">Commission</TableHead>
-              <TableHead className="font-medium text-xs">Taux Effectif Global</TableHead>
-              <TableHead className="font-medium text-xs">Date de la demande</TableHead>
-              <TableHead className="font-medium text-xs">Date dernière échéance</TableHead>
-              <TableHead className="font-medium text-xs">Status de la demande</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {data.map((loan) => (
-              <TableRow key={loan.accountNumber}>
-                <TableCell className="text-xs">{loan.type}</TableCell>
-                <TableCell className="text-xs">{loan.interestRate}</TableCell>
-                <TableCell className="text-xs">{loan.commission}</TableCell>
-                <TableCell className="text-xs">{loan.globalEffectiveRate}</TableCell>
-                <TableCell className="text-xs">{loan.requestDate}</TableCell>
-                <TableCell className="text-xs">
-                  {loan.status === 'validé' ? loan.lastPaymentDate : 'En attente'}
-                </TableCell>
-                <TableCell>
-                  <Badge
-                    className={loan.status === 'validé'
-                      ? "bg-green-100 text-green-800 hover:bg-green-200"
-                      : "bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
-                    }
-                  >
-                    {loan.status === 'validé' ? 'Validé' : 'En attente'}
-                  </Badge>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+      {/* Premier tableau */}
+      <div className="mb-8">
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                  Numéro de
+                  <br />
+                  contrat
+                </th>
+                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                  Identifiant
+                  <br />
+                  emprunteur
+                </th>
+                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                  Montant
+                  <br />
+                  demandé
+                </th>
+                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                  Montant du prêt
+                </th>
+                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                  Mensualité
+                </th>
+                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                  Durée
+                  <br />
+                  souhaitée
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((loan) => (
+                <tr key={loan.accountNumber}>
+                  <td className="text-xs text-gray-700 text-center py-3">
+                    <div className="text-xs text-center">{loan.type}</div>
+                    <div className="text-xs text-center text-gray-500">
+                      {loan.accountNumber}
+                    </div>
+                  </td>
+                  <td className="text-xs text-center py-3">
+                    {loan.borrowerIdentifier}
+                  </td>
+                  <td className="text-xs text-center py-3">
+                    {loan.requestedAmount}
+                  </td>
+                  <td className="text-xs text-center py-3">
+                    {loan.loanAmount}
+                  </td>
+                  <td className="text-xs text-center py-3">
+                    {loan.monthlyPayment}
+                  </td>
+                  <td className="text-xs text-center py-3">
+                    {loan.durationMonths} mois
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

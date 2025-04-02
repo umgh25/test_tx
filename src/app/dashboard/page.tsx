@@ -78,93 +78,95 @@ export default function Dashboard() {
     },
   ];
 
-  // Données pour les prêts
+  // Données pour les prêts - mises à jour selon la nouvelle image
   const loansData = [
     {
-      type: "Prêt Société",
-      accountNumber: "12345789",
-      borrowerIdentifier: "UKR37UB",
-      requestedAmount: "39,234 €",
-      loanAmount: "39,234 €",
-      monthlyPayment: "705€",
+      accountNumber: "13452789",
+      borrowerIdentifier: "UK567UB",
+      requestedAmount: "39 234€",
+      loanAmount: "39 234€",
+      monthlyPayment: "700€",
       durationMonths: "18 mois",
       interestRate: "3%",
-      commission: "Lorem ipsum",
+      commission: "Lorem Ipsum",
       globalEffectiveRate: "3",
       requestDate: "01/11/2019",
       lastPaymentDate: "01/04/2022",
       status: "validé" as LoanStatus,
     },
     {
-      type: "Prêt Holdingue",
-      accountNumber: "87547930",
-      borrowerIdentifier: "UKR37UB",
-      requestedAmount: "12,350 €",
-      loanAmount: "12,350 €",
+      accountNumber: "67547800",
+      borrowerIdentifier: "UK567UB",
+      requestedAmount: "12 300€",
+      loanAmount: "En attente",
       monthlyPayment: "En attente",
       durationMonths: "14 mois",
       interestRate: "8%",
-      commission: "Lorem ipsum",
-      globalEffectiveRate: "9",
-      requestDate: "04/03/2021",
+      commission: "Lorem Ipsum",
+      globalEffectiveRate: "5",
+      requestDate: "04/09/2021",
       lastPaymentDate: "En attente",
       status: "en attente" as LoanStatus,
     },
   ];
 
   return (
-    <DashboardLayout>
-      {/* Header */}
-      <Header username="Paul" />
+    <div className="bg-gray-100 min-h-screen">
+      <DashboardLayout>
+        {/* Header */}
+        <Header username="Paul" />
 
-      {/* Onglets de navigation */}
-      <LoansTab />
+        {/* Onglets de navigation */}
+        <LoansTab />
 
-      {/* Contenu principal */}
-      <div className="my-6">
-        <h2 className="text-xl font-semibold mb-4">Mon compte</h2>
+        {/* Contenu principal */}
+        <div className="my-6">
+          <h2 className="text-xl font-semibold mb-4">Mon compte</h2>
 
-        <ProfileCard
-          name="Paul Dumarin"
-          address="54 rue du Louvre"
-          city="PARIS 75001"
-          segment="Segment"
-          riskEvaluation={{
-            label: "Risques faible",
-            value: "B",
-          }}
-          score={{
-            label: "Lorem Ipsum",
-            value: "B",
-            range: {
-              min: "A",
-              max: "C",
-              current: 66,
-            },
-          }}
-          lastTransaction="80K"
-        />
-      </div>
+          <ProfileCard
+            name="Paul Dumarin"
+            address="54 rue du Louvre"
+            city="PARIS 75001"
+            segment="Segment"
+            riskEvaluation={{
+              label: "Risques faible",
+              value: "B",
+            }}
+            score={{
+              label: "Lorem Ipsum",
+              value: "B",
+              range: {
+                min: "A",
+                max: "C",
+                current: 66,
+              },
+            }}
+            lastTransaction="80K"
+          />
+        </div>
 
-      {/* Graphiques et tableaux financiers */}
-      <div className="my-6">
-        <h2 className="text-xl font-semibold mb-4">Informations financières</h2>
+        {/* Graphiques et tableaux financiers */}
+        <div className="my-6">
+          <h2 className="text-xl font-semibold mb-4">
+            Informations financières
+          </h2>
 
-        <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-4 h-full">
-            <FinancialChart data={chartData} />
-          </div>
-          <div className="col-span-8 h-full">
-            <MarketRiskTable data={riskData} />
+          <div className="grid grid-cols-12 gap-6">
+            <div className="col-span-4 h-full">
+              <FinancialChart data={chartData} />
+            </div>
+            <div className="col-span-8 h-full">
+              <MarketRiskTable data={riskData} />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Section Transactions */}
-      <TransactionsSection />
+        {/* Section Transactions */}
+        <TransactionsSection />
 
-      {/* Tableau des prêts */}
-      <LoansTable data={loansData} />
-    </DashboardLayout>
+        {/* Tableau des prêts */}
+        <LoansTable data={loansData} />
+      </DashboardLayout>
+    </div>
   );
 }
