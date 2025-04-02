@@ -11,7 +11,7 @@ const Header: React.FC<HeaderProps> = ({ username }) => {
     <div className="flex justify-between items-center mb-8">
       <h1 className="text-2xl font-semibold">Bonjour {username} !</h1>
       <div className="flex items-center gap-4">
-        <Button variant="default" className="bg-blue-900 hover:bg-blue-950 text-white">
+        <Button variant="default" className="bg-blue-900 hover:bg-blue-950 text-white ">
           Demander un financement
         </Button>
         <Avatar className="h-12 w-12 hidden sm:flex border-2 border-white shadow-sm">
