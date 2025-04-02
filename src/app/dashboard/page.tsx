@@ -150,11 +150,11 @@ export default function Dashboard() {
       <div className="my-6">
         <h2 className="text-xl font-semibold mb-4">Informations financières</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="w-full h-full">
+        <div className="grid grid-cols-12 gap-6">
+          <div className="col-span-4 h-full">
             <FinancialChart data={chartData} />
           </div>
-          <div className="w-full h-full">
+          <div className="col-span-8 h-full">
             <MarketRiskTable data={riskData} />
           </div>
         </div>
