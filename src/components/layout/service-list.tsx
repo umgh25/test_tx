@@ -71,7 +71,7 @@ export function ServiceList() {
           </div>
         </div>
 
-        <div className="md:w-1/2 md:pr-16 space-y-6 ml-auto">
+        <div className="md:w-3/4 md:pr-16 space-y-6 ml-auto">
           <div className="space-y-5">
             <p className="text-sm text-gray-700 leading-relaxed">
               Des taux compétitifs en quelques clics.
