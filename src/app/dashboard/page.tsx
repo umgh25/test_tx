@@ -81,7 +81,7 @@ export default function Dashboard() {
   // Données pour les prêts - mises à jour selon la nouvelle image
   const loansData = [
     {
-      type: "Prêt Société", // Ajout de la propriété type
+      type: "Prêt Société",
       accountNumber: "13452789",
       borrowerIdentifier: "UK567UB",
       requestedAmount: "39 234€",
@@ -96,7 +96,7 @@ export default function Dashboard() {
       status: "validé" as LoanStatus,
     },
     {
-      type: "Prêt HotDoggs", // Ajout de la propriété type
+      type: "Prêt HotDoggs",
       accountNumber: "67547800",
       borrowerIdentifier: "UK567UB",
       requestedAmount: "12 300€",
