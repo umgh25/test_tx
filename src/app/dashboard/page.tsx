@@ -1,11 +1,116 @@
-import Dashboard from '@/components/dashboard/Sidebar';
+'use client';
 
-export default function DashboardPage() {
+import React from 'react';
+import DashboardLayout from '@/components/dashboard/DashboardLayout';
+import Header from '@/components/dashboard/Header';
+import ProfileCard from '@/components/dashboard/ProfileCard';
+
+
+// Définissez le type pour être cohérent avec l'interface LoanData dans LoansTable
+type LoanStatus = 'validé' | 'en attente';
+
+export default function Dashboard() {
+  // Données pour le graphique financier
+  const chartData = [
+    { name: '1', greenLine: 10, yellowLine: 15, blueLine: 8 },
+    { name: '5', greenLine: 12, yellowLine: 18, blueLine: 10 },
+    { name: '10', greenLine: 14, yellowLine: 17, blueLine: 15 },
+    { name: '15', greenLine: 18, yellowLine: 19, blueLine: 16 },
+    { name: '20', greenLine: 24, yellowLine: 22, blueLine: 20 },
+    { name: '25', greenLine: 45, yellowLine: 32, blueLine: 30 },
+  ];
+
+  // Données pour le tableau des risques de marché
+  const riskData = [
+    { period: '7 DAYS', euribor: 'Euribor1m', tenor: '7 DAYS', marketPlaceRate: '0.0000', marketRiskFreeRate: '0', marketRiskFreeSpread: '0.0000', change: '0.0000', variation: '1' },
+    { period: '30 DAYS', euribor: 'Euribor1m', tenor: '30 DAYS', marketPlaceRate: '0.0000', marketRiskFreeRate: '0', marketRiskFreeSpread: '0.0000', change: '0.0000', variation: '1' },
+    { period: '90 DAYS', euribor: 'Euribor1m', tenor: '90 DAYS', marketPlaceRate: '0.02945', marketRiskFreeRate: '0.02945', marketRiskFreeSpread: '0.0000', change: '0.0000', variation: '0.02945' },
+    { period: '180 DAYS', euribor: 'Euribor1m', tenor: '180 DAYS', marketPlaceRate: '0.02945', marketRiskFreeRate: '0.02945', marketRiskFreeSpread: '0.0000', change: '0.0000', variation: '0.02945' },
+    { period: '365 DAYS', euribor: 'Euribor1m', tenor: '365 DAYS', marketPlaceRate: '0.02945', marketRiskFreeRate: '0.02945', marketRiskFreeSpread: '0.0000', change: '0.0000', variation: '0.02945' },
+  ];
+
+  // Données pour les prêts
+  const loansData = [
+    {
+      type: 'Prêt Société',
+      accountNumber: '12345789',
+      borrowerIdentifier: 'UKR37UB',
+      requestedAmount: '39,234 €',
+      loanAmount: '39,234 €',
+      monthlyPayment: '705€',
+      durationMonths: '18 mois',
+      interestRate: '3%',
+      commission: 'Lorem ipsum',
+      globalEffectiveRate: '3',
+      requestDate: '01/11/2019',
+      lastPaymentDate: '01/04/2022',
+      status: 'validé' as LoanStatus
+    },
+    {
+      type: 'Prêt Holdingue',
+      accountNumber: '87547930',
+      borrowerIdentifier: 'UKR37UB',
+      requestedAmount: '12,350 €',
+      loanAmount: '12,350 €',
+      monthlyPayment: 'En attente',
+      durationMonths: '14 mois',
+      interestRate: '8%',
+      commission: 'Lorem ipsum',
+      globalEffectiveRate: '9',
+      requestDate: '04/03/2021',
+      lastPaymentDate: 'En attente',
+      status: 'en attente' as LoanStatus
+    }
+  ];
+
   return (
+    <DashboardLayout>
+      {/* Header */}
+      <Header username="Paul" />
 
-    <Dashboard />
-    
-    
-    
+      {/* Onglets de navigation */}
+      
+
+      {/* Contenu principal */}
+      <div className="my-6">
+        <h2 className="text-xl font-semibold mb-4">Mon compte</h2>
+
+        <ProfileCard
+          name="Paul Dumarin"
+          address="54 rue du Louvre"
+          city="PARIS 75001"
+          segment="Segment"
+          riskEvaluation={{
+            label: "Risques faible",
+            value: "RET"
+          }}
+          score={{
+            label: "Lorem Ipsum",
+            value: "B",
+            range: {
+              min: 'A',
+              max: 'C',
+              current: 66
+            }
+          }}
+          lastTransaction="80K"
+        />
+      </div>
+
+      {/* Graphiques et tableaux financiers */}
+      <div className="my-6">
+        <h2 className="text-xl font-semibold mb-4">Informations financières</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+        </div>
+      </div>
+
+      {/* Section Transactions */}
+      
+
+      {/* Tableau des prêts */}
+      
+    </DashboardLayout>
   );
 }

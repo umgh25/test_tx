@@ -1,86 +1,65 @@
-'use client';
-
-import type React from 'react';
+// components/Sidebar.tsx
+import { FC } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import {
-  LayoutDashboard,
-  ArrowLeftRight,
-  Users,
-  HelpCircle,
-  Bell,
-  Settings
+import { 
+  LayoutDashboard, 
+  ArrowLeftRight, 
+  Users, 
+  HelpCircle, 
+  Bell, 
+  Settings 
 } from 'lucide-react';
-import Logo from './Logo';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { use } from 'react';
 
-interface NavItemProps {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
-  active?: boolean;
-}
-
-const NavItem: React.FC<NavItemProps> = ({ href, icon, label, active }) => {
+const Sidebar: FC = () => {
   return (
-    <Link
-      href={href}
-      className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-        active
-          ? 'bg-slate-100 text-blue-700'
-          : 'text-slate-600 hover:bg-slate-100'
-      }`}
-    >
-      {icon}
-      <span className="text-sm">{label}</span>
-    </Link>
-  );
-};
-
-const Sidebar = () => {
-  const pathname = usePathname();
-
-  const navItems = [
-    { href: '/', icon: <LayoutDashboard size={20} />, label: 'Tableau de Bord' },
-    { href: '/transactions', icon: <ArrowLeftRight size={20} />, label: 'Mes transactions' },
-    { href: '/clients', icon: <Users size={20} />, label: 'Mes clients' },
-    { href: '/assistance', icon: <HelpCircle size={20} />, label: 'Assistance' },
-    { href: '/notifications', icon: <Bell size={20} />, label: 'Mes notifications (1)' },
-    { href: '/reglages', icon: <Settings size={20} />, label: 'Réglages' },
-  ];
-
-  return (
-    <div className="w-64 h-screen bg-white border-r border-slate-200 flex flex-col p-4">
-      <div className="mb-8 px-3">
-        <Logo />
+    <div className="w-64 h-full bg-white border-r border-gray-200 flex flex-col">
+      <div className="p-6">
+        <Image src="/logo.png" alt="LiqTrade" width={150} height={40} className="mb-8" />
+        
+        <nav className="space-y-1">
+          <Link href="/dashboard" className="flex items-center px-3 py-3 text-gray-700 rounded-md bg-blue-50">
+            <LayoutDashboard className="h-5 w-5 mr-3 text-blue-600" />
+            <span className="text-blue-600 font-medium">Tableau de Bord</span>
+          </Link>
+          
+          <Link href="/transactions" className="flex items-center px-3 py-3 text-gray-700 rounded-md hover:bg-gray-100">
+            <ArrowLeftRight className="h-5 w-5 mr-3 text-gray-500" />
+            <span className="font-medium">Mes transactions</span>
+          </Link>
+          
+          <Link href="/clients" className="flex items-center px-3 py-3 text-gray-700 rounded-md hover:bg-gray-100">
+            <Users className="h-5 w-5 mr-3 text-gray-500" />
+            <span className="font-medium">Mes clients</span>
+          </Link>
+          
+          <Link href="/assistance" className="flex items-center px-3 py-3 text-gray-700 rounded-md hover:bg-gray-100">
+            <HelpCircle className="h-5 w-5 mr-3 text-gray-500" />
+            <span className="font-medium">Assistance</span>
+          </Link>
+        </nav>
       </div>
-
-      <nav className="flex-1 space-y-1">
-        {navItems.map((item) => (
-          <NavItem
-            key={item.href}
-            href={item.href}
-            icon={item.icon}
-            label={item.label}
-            active={pathname === item.href}
-          />
-        ))}
-      </nav>
-
-      <div className="mt-auto pt-4 border-t border-slate-200">
-        <div className="flex items-center gap-3 px-3 py-2">
-          <Avatar className="h-10 w-10 border-2 border-white shadow-sm">
-            <AvatarImage src="/avatar.png" alt="Paul Dumarin" />
-            <AvatarFallback className="bg-blue-100 text-blue-800">PD</AvatarFallback>
-          </Avatar>
-          <div className="flex flex-col">
-            <p className="text-sm font-medium leading-none">Paul Dumarin</p>
-            <div className="flex items-center mt-1">
-              <p className="text-xs text-slate-500 mr-1">Statut Vérification KYC:</p>
-              <Badge className="text-xs h-5 bg-green-100 text-green-700 hover:bg-green-200">Validé</Badge>
-            </div>
+      
+      <div className="mt-auto border-t border-gray-200">
+        <Link href="/notifications" className="flex items-center px-6 py-4 text-gray-700 hover:bg-gray-100">
+          <Bell className="h-5 w-5 mr-3 text-gray-500" />
+          <span className="font-medium">Mes notifications <span className="text-xs bg-gray-200 px-2 py-0.5 rounded-full ml-2">(1)</span></span>
+        </Link>
+        
+        <Link href="/settings" className="flex items-center px-6 py-4 text-gray-700 hover:bg-gray-100">
+          <Settings className="h-5 w-5 mr-3 text-gray-500" />
+          <span className="font-medium">Réglages</span>
+        </Link>
+      </div>
+      
+      <div className="p-4 border-t border-gray-200">
+        <div className="flex items-center">
+          <div className="flex-shrink-0">
+            <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-medium">PD</div>
+          </div>
+          <div className="ml-3">
+            <p className="text-sm font-medium text-gray-700">Paul Dumartin</p>
+            <p className="text-xs text-gray-500">Statut KYC: <span className="text-green-500">Validé</span></p>
           </div>
         </div>
       </div>
