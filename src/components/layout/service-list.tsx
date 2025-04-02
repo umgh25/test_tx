@@ -76,14 +76,18 @@ export function ServiceList() {
             <p className="text-sm text-gray-700 leading-relaxed">
               Des taux compétitifs en quelques clics.
               <br />
-              Quel que soit votre projet, nous vous accompagnons de manière bienveillante avec les meilleurs
-              outils en ligne. Oubliez le parcours du combattant, à vous le financement professionnel à court
-              terme. Chez Liztrade nous vous aidons à évoluer à travers des solutions de financement simples,
-              efficaces et compétitives en seulement quelques clics.
+              Quel que soit votre projet, nous vous accompagnons de manière
+              bienveillante avec les meilleurs outils en ligne. Oubliez le
+              parcours du combattant, à vous le financement professionnel à
+              court terme. Chez Liztrade nous vous aidons à évoluer à travers
+              des solutions de financement simples, efficaces et compétitives en
+              seulement quelques clics.
             </p>
 
             <div className="space-y-2">
-              <p className="font-medium text-gray-700">TPE/PME, comptez sur nous pour vous aider à :</p>
+              <p className="font-medium text-gray-700">
+                TPE/PME, comptez sur nous pour vous aider à :
+              </p>
 
               <ul className="list-none space-y-1 text-sm text-gray-600 ml-1">
                 {serviceItems.map((item) => (
