@@ -60,12 +60,7 @@ const Sidebar: FC = () => {
           className="flex items-center px-4 py-3 text-gray-500 hover:bg-gray-100"
         >
           <Bell className="h-5 w-5 mr-3 text-green-500" />
-          <span className="font-normal">
-            Mes notifications{" "}
-            <span className="text-xs bg-gray-100 px-2 py-0.5 rounded-full ml-1">
-              (1)
-            </span>
-          </span>
+          <span className="font-normal">Mes notifications (1)</span>
         </Link>
         <Link
           href="/settings"
