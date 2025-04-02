@@ -3,8 +3,12 @@
 import React from 'react';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import Header from '@/components/dashboard/Header';
+import LoansTab from '@/components/dashboard/LoansTab';
 import ProfileCard from '@/components/dashboard/ProfileCard';
-
+import FinancialChart from '@/components/dashboard/FinancialChart';
+import MarketRiskTable from '@/components/dashboard/MarketRiskTable';
+import TransactionsSection from '@/components/dashboard/TransactionsSection';
+import LoansTable from '@/components/dashboard/LoansTable';
 
 // Définissez le type pour être cohérent avec l'interface LoanData dans LoansTable
 type LoanStatus = 'validé' | 'en attente';
@@ -69,7 +73,7 @@ export default function Dashboard() {
       <Header username="Paul" />
 
       {/* Onglets de navigation */}
-      
+      <LoansTab />
 
       {/* Contenu principal */}
       <div className="my-6">
@@ -82,7 +86,7 @@ export default function Dashboard() {
           segment="Segment"
           riskEvaluation={{
             label: "Risques faible",
-            value: "RET"
+            value: "B"
           }}
           score={{
             label: "Lorem Ipsum",
@@ -102,15 +106,16 @@ export default function Dashboard() {
         <h2 className="text-xl font-semibold mb-4">Informations financières</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
+          <FinancialChart data={chartData} />
+          <MarketRiskTable data={riskData} />
         </div>
       </div>
 
       {/* Section Transactions */}
-      
+      <TransactionsSection />
 
       {/* Tableau des prêts */}
-      
+      <LoansTable data={loansData} />
     </DashboardLayout>
   );
 }
