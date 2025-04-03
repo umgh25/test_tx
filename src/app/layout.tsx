@@ -10,14 +10,13 @@ export const metadata: Metadata = {
     "LiqTrade offre des solutions de financement professionnel à court terme, sans garantie personnelle. Prêt et affacturage pour les entreprises.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <html lang="fr">
+    <html lang="fr" dir="ltr">
+      <head></head>
       <body className={inter.className}>{children}</body>
     </html>
   );
-}
+};
+
+export default RootLayout;

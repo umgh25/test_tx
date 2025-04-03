@@ -104,7 +104,7 @@ const TransactionsSection: React.FC = () => {
               </div>
 
               <div className="flex mt-2">
-                {/* Left side - Circle progress */}
+                {/* Circle progress */}
                 <div className="flex-shrink-0 w-1/3">
                   <div className="relative w-24 h-24">
                     <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -143,7 +143,7 @@ const TransactionsSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Right side - Checkmarks */}
+                {/* Checkmarks */}
                 <div className="ml-3 w-2/3">
                   <div className="flex items-center mb-2">
                     <svg

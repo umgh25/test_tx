@@ -1,6 +1,6 @@
-import type React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import type React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface ProfileCardProps {
   name?: string;
@@ -29,31 +29,39 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   city,
   riskEvaluation,
   score,
-  lastTransaction
+  lastTransaction,
 }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
       {/* Info carte */}
       <Card className="p-4 flex flex-col justify-between h-full">
         <div className="flex items-center justify-between mb-3">
-          
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            </svg>
-          
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          ></svg>
+
           <div className="text-xs text-slate-500">
             <img src="segment.png" alt="Segment" />
           </div>
         </div>
         <div>
           <h3 className="font-medium text-sm">{name || "Paul Dumartin"}</h3>
-          <p className="text-xs text-slate-500">{address || "14 rue du Louvre"}</p>
+          <p className="text-xs text-slate-500">
+            {address || "14 rue du Louvre"}
+          </p>
           <p className="text-xs text-slate-500">{city || "PARIS 75001"}</p>
         </div>
       </Card>
 
       {/* Segment Card */}
       <Card className="p-4 flex flex-col items-center justify-center h-full relative">
-        <div className="text-xs text-slate-500 w-full text-left mb-2">Segment</div>
+        <div className="text-xs text-slate-500 w-full text-left mb-2">
+          Segment
+        </div>
         <div className="text-center flex-grow flex items-center justify-center"></div>
         {/* Placer 'RET' dans le coin inférieur droit */}
         <div className="absolute bottom-0 right-0 mb-2 mr-2 text-4xl sm:text-5xl md:text-6xl font-bold text-indigo-800">
@@ -63,8 +71,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 
       {/* Risk Evaluation Card */}
       <Card className="p-4 flex flex-col h-full relative">
-        <div className="text-xs text-slate-500 mb-1">Évaluation des risques</div>
-        <div className="text-sm text-green-500 font-medium mb-2">{riskEvaluation?.label || "Risques faible"}</div>
+        <div className="text-xs text-slate-500 mb-1">
+          Évaluation des risques
+        </div>
+        <div className="text-sm text-green-500 font-medium mb-2">
+          {riskEvaluation?.label || "Risques faible"}
+        </div>
         <div className="flex-grow flex items-center justify-center">
           <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-green-500">
             <div className="absolute bottom-0 right-0 mb-2 mr-2">
@@ -98,9 +110,13 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 
       {/* Transaction Card */}
       <Card className="p-4 flex flex-col h-full">
-        <div className="text-xs text-slate-500 mb-1">Montant dernière transaction</div>
+        <div className="text-xs text-slate-500 mb-1">
+          Montant dernière transaction
+        </div>
         <div className="flex-grow flex flex-col items-center justify-center">
-          <div className="text-4xl sm:text-5xl font-bold text-indigo-800">{lastTransaction || "80K"}</div>
+          <div className="text-4xl sm:text-5xl font-bold text-indigo-800">
+            {lastTransaction || "80K"}
+          </div>
           <div className="mt-4">
             <img src="/coin.png" alt="Coin" className="w-16 h-16 ml-auto" />
           </div>

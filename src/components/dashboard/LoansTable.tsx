@@ -1,4 +1,4 @@
-import type React from "react";
+import { FC, memo } from "react";
 
 interface LoanData {
   type: string;
@@ -20,7 +20,11 @@ interface LoansTableProps {
   data: LoanData[];
 }
 
-const LoansTable: React.FC<LoansTableProps> = ({ data }) => {
+const tableHeaderClasses =
+  "text-blue-900 text-center font-medium text-xs pb-6 w-1/6";
+const tableCellClasses = "text-xs text-gray-700 text-center py-3";
+
+const LoansTable: FC<LoansTableProps> = ({ data }) => {
   return (
     <div className="mt-8">
       <h2 className="text-xl font-semibold mb-4">Détails des prêts</h2>
@@ -31,28 +35,24 @@ const LoansTable: React.FC<LoansTableProps> = ({ data }) => {
           <table className="w-full">
             <thead>
               <tr>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                <th className={tableHeaderClasses}>
                   Numéro de
                   <br />
                   contrat
                 </th>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                <th className={tableHeaderClasses}>
                   Identifiant
                   <br />
                   emprunteur
                 </th>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                <th className={tableHeaderClasses}>
                   Montant
                   <br />
                   demandé
                 </th>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
-                  Montant du prêt
-                </th>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
-                  Mensualité
-                </th>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                <th className={tableHeaderClasses}>Montant du prêt</th>
+                <th className={tableHeaderClasses}>Mensualité</th>
+                <th className={tableHeaderClasses}>
                   Durée
                   <br />
                   souhaitée
@@ -60,29 +60,19 @@ const LoansTable: React.FC<LoansTableProps> = ({ data }) => {
               </tr>
             </thead>
             <tbody>
-              {data.map((loan, index) => (
-                <tr key={`loan-details-${index}`}>
-                  <td className="text-xs text-gray-700 text-center py-3">
-                    <div className="text-xs text-center">{loan.type}</div>
-                    <div className="text-xs text-center text-gray-500">
-                      {loan.accountNumber}
-                    </div>
+              {data.map((loan) => (
+                <tr key={loan.accountNumber}>
+                  <td className={tableCellClasses}>
+                    <div>{loan.type}</div>
+                    <div className="text-gray-500">{loan.accountNumber}</div>
                   </td>
-                  <td className="text-xs text-center py-3">
+                  <td className={tableCellClasses}>
                     {loan.borrowerIdentifier}
                   </td>
-                  <td className="text-xs text-center py-3">
-                    {loan.requestedAmount}
-                  </td>
-                  <td className="text-xs text-center py-3">
-                    {loan.loanAmount}
-                  </td>
-                  <td className="text-xs text-center py-3">
-                    {loan.monthlyPayment}
-                  </td>
-                  <td className="text-xs text-center py-3">
-                    {loan.durationMonths}
-                  </td>
+                  <td className={tableCellClasses}>{loan.requestedAmount}</td>
+                  <td className={tableCellClasses}>{loan.loanAmount}</td>
+                  <td className={tableCellClasses}>{loan.monthlyPayment}</td>
+                  <td className={tableCellClasses}>{loan.durationMonths}</td>
                 </tr>
               ))}
             </tbody>
@@ -96,30 +86,28 @@ const LoansTable: React.FC<LoansTableProps> = ({ data }) => {
           <table className="w-full">
             <thead>
               <tr>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                <th className={tableHeaderClasses}>
                   Taux
                   <br />
                   d'intérêt
                 </th>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
-                  Commission
-                </th>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                <th className={tableHeaderClasses}>Commission</th>
+                <th className={tableHeaderClasses}>
                   Taux Effect
                   <br />
                   Global
                 </th>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                <th className={tableHeaderClasses}>
                   Date de la
                   <br />
                   demande
                 </th>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                <th className={tableHeaderClasses}>
                   Date dernière
                   <br />
                   échéance
                 </th>
-                <th className="text-blue-900 text-center font-medium text-xs pb-6 w-1/6">
+                <th className={tableHeaderClasses}>
                   Statut de la
                   <br />
                   demande
@@ -127,27 +115,18 @@ const LoansTable: React.FC<LoansTableProps> = ({ data }) => {
               </tr>
             </thead>
             <tbody>
-              {data.map((loan, index) => (
-                <tr key={`loan-status-${index}`}>
-                  <td className="text-xs text-gray-700 text-center py-3">
-                    <div className="text-xs text-center">{loan.type}</div>
-                    <div className="text-xs text-center text-gray-500">
-                      {loan.interestRate}
-                    </div>
+              {data.map((loan) => (
+                <tr key={loan.accountNumber}>
+                  <td className={tableCellClasses}>
+                    <div>{loan.interestRate}</div>
                   </td>
-                  <td className="text-xs text-center py-3">
-                    {loan.commission}
-                  </td>
-                  <td className="text-xs text-center py-3">
+                  <td className={tableCellClasses}>{loan.commission}</td>
+                  <td className={tableCellClasses}>
                     {loan.globalEffectiveRate}
                   </td>
-                  <td className="text-xs text-center py-3">
-                    {loan.requestDate}
-                  </td>
-                  <td className="text-xs text-center py-3">
-                    {loan.lastPaymentDate}
-                  </td>
-                  <td className="text-xs text-center py-3">
+                  <td className={tableCellClasses}>{loan.requestDate}</td>
+                  <td className={tableCellClasses}>{loan.lastPaymentDate}</td>
+                  <td className={tableCellClasses}>
                     <span
                       className={
                         loan.status === "validé"
@@ -168,4 +147,4 @@ const LoansTable: React.FC<LoansTableProps> = ({ data }) => {
   );
 };
 
-export default LoansTable;
+export default memo(LoansTable);
