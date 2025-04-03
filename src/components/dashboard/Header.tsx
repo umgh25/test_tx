@@ -2,12 +2,31 @@ import { FC, memo } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
+/**
+ * Propriétés du composant Header.
+ * @interface HeaderProps
+ * @property {string} username - Le nom d'utilisateur à afficher dans l'en-tête.
+ */
 interface HeaderProps {
   username: string;
 }
 
+/**
+ * Composant d'en-tête affichant un message de bienvenue, un bouton de demande de financement et un avatar de l'utilisateur.
+ *
+ * Ce composant est optimisé avec `memo` pour éviter les re-rendus inutiles si les props ne changent pas.
+ *
+ * @component
+ * @example
+ * // Exemple d'utilisation
+ * <Header username="John Doe" />
+ *
+ * @param {HeaderProps} props - Les propriétés du composant.
+ * @param {string} props.username - Le nom d'utilisateur à afficher.
+ * @returns {JSX.Element} L'en-tête avec le message de bienvenue, le bouton et l'avatar.
+ */
 const Header: FC<HeaderProps> = ({ username }) => {
-  // Générer les initiales de l'utilisateur
+  // Calcul des initiales de l'utilisateur
   const userInitials = username
     .split(" ")
     .map((n) => n[0])
