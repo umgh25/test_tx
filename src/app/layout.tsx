@@ -1,12 +1,13 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'LiqTrade - Financement professionnel à court terme',
-  description: 'LiqTrade offre des solutions de financement professionnel à court terme, sans garantie personnelle. Prêt et affacturage pour les entreprises.',
+  title: "LiqTrade - Financement professionnel à court terme",
+  description:
+    "LiqTrade offre des solutions de financement professionnel à court terme, sans garantie personnelle. Prêt et affacturage pour les entreprises.",
 };
 
 export default function RootLayout({
@@ -16,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={inter.className}>
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
